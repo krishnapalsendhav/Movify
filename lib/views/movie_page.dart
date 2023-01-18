@@ -22,7 +22,7 @@ class MoviePage extends StatelessWidget {
         automaticallyImplyLeading: false,
         centerTitle: true,
         shadowColor: theme.shadowColor,
-        title: Text('${controller.moviesList[movieIndex].title}', style: theme.textTheme.titleLarge),
+        title: Text('${controller.moviesList[movieIndex]!.title}', style: theme.textTheme.titleLarge),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -33,7 +33,7 @@ class MoviePage extends StatelessWidget {
               SizedBox(
                 width: width,
                 height: height / 1.5,
-                child: Image.network(controller.moviesList[movieIndex].imageUrl!, fit: BoxFit.cover),
+                child: Image.network(controller.moviesList[movieIndex]!.imageUrl!, fit: BoxFit.cover),
               ),
               const SizedBox(height: 10),
               Row(
@@ -50,7 +50,7 @@ class MoviePage extends StatelessWidget {
                   MaterialButton(
                     color: Colors.green,
                     clipBehavior: Clip.antiAlias,
-                    onPressed: () async => _urlLaunch(controller.moviesList[movieIndex].downloadUrl![0]),
+                    onPressed: () async => _urlLaunch(controller.moviesList[movieIndex]!.downloadUrl![0]!.url!),
                     child: Row(
                       children: [Text('Download', style: theme.textTheme.titleMedium), Icon(Icons.download_rounded, color: theme.primaryColorLight)],
                     ),

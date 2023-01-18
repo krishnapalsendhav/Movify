@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class Services {
   Future<AllMovies?> getMovies() async {
     try {
-      var res = await http.get(Uri.parse('https://movie-app-fbn6.onrender.com/api/v1/movies'));
+      var res = await http.get(Uri.parse('http://localhost:5000/api/v2/movies'));
       if (res.statusCode == 200) {
         return allMoviesFromJson(res.body);
       } else if (res.statusCode == 404) {

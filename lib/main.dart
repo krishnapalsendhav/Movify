@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie_app/views/create_movie.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:movie_app/views/home_page.dart';
 import 'firebase_options.dart';
 
-void main()async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-);
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -58,7 +57,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: UploadMoviePage(),
+      home: HomePage(),
     );
   }
 }

@@ -43,7 +43,7 @@ onDelete(int index, MyController controller) async {
     confirmTextColor: Get.theme.primaryColorLight,
     onCancel: () {},
     onConfirm: () async {
-      var res = await Services().deleteMovie(controller.moviesList[index].id!);
+      var res = await Services().deleteMovie(controller.moviesList[index]!.id!);
 
       if (res != null) {
         Get.back();

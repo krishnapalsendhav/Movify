@@ -6,13 +6,13 @@ import 'package:movie_app/services/internet_services.dart';
 
 class MyController extends GetxController with GetSingleTickerProviderStateMixin {
   Services services = Services();
-  RxList<Movie> moviesList = <Movie>[].obs;
+  RxList<Movie?> moviesList = <Movie>[].obs;
   late AnimationController lottieController;
 
   void fetchMovies() async {
     var res = await services.getMovies();
     if (res != null) {
-      moviesList.addAll(res.movies!);
+      moviesList.value = res.movies!;
       moviesList.refresh();
     }
     update();

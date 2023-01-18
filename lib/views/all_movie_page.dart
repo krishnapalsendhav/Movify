@@ -33,13 +33,13 @@ class GetMovies extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: ListTile(
                         onTap: () => onTap(index, theme, context, width, height),
-                        title: Text(controller.moviesList[index].title ?? 'Title unavailable'),
-                        subtitle: Text(controller.moviesList[index].id ?? 'id unavailable'),
+                        title: Text(controller.moviesList[index]!.title ?? 'Title unavailable'),
+                        subtitle: Text(controller.moviesList[index]!.id ?? 'id unavailable'),
                         leading: SizedBox(
                           width: 50,
                           child: FadeInImage(
                             placeholder: const AssetImage('assets/images/play.png'),
-                            image: controller.moviesList[index].imageUrl != null ? NetworkImage(controller.moviesList[index].imageUrl!) : const AssetImage('assets/images/play.png') as ImageProvider,
+                            image: controller.moviesList[index]!.imageUrl != null ? NetworkImage(controller.moviesList[index]!.imageUrl!) : const AssetImage('assets/images/play.png') as ImageProvider,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -66,9 +66,9 @@ class GetMovies extends StatelessWidget {
   }
 
   void onTap(int index, ThemeData theme, BuildContext context, double width, double height) {
-    final movieNameController = TextEditingController(text: controller.moviesList[index].title);
-    final imageUrlController = TextEditingController(text: controller.moviesList[index].imageUrl);
-    final downloadUrlController = TextEditingController(text: controller.moviesList[index].downloadUrl![0]);
+    final movieNameController = TextEditingController(text: controller.moviesList[index]!.title);
+    final imageUrlController = TextEditingController(text: controller.moviesList[index]!.imageUrl);
+    final downloadUrlController = TextEditingController(text: controller.moviesList[index]!.downloadUrl![0]!.url);
     showModalBottomSheet(
         backgroundColor: theme.scaffoldBackgroundColor,
         clipBehavior: Clip.antiAlias,
@@ -84,11 +84,11 @@ class GetMovies extends StatelessWidget {
                 children: [
                   SizedBox(height: height / 16),
                   Image.network(
-                    controller.moviesList[index].imageUrl!,
+                    controller.moviesList[index]!.imageUrl!,
                     height: height / 3,
                   ),
                   const SizedBox(height: 20),
-                  SelectableText(controller.moviesList[index].title!, style: theme.textTheme.titleLarge),
+                  SelectableText(controller.moviesList[index]!.title!, style: theme.textTheme.titleLarge),
                   const SizedBox(height: 20),
                   Material(
                     elevation: 3,
@@ -178,7 +178,7 @@ class GetMovies extends StatelessWidget {
                         color: Colors.green,
                         disabledColor: Colors.grey,
                         clipBehavior: Clip.antiAlias,
-                        onPressed: () => onUpdate(controller, controller.moviesList[index].id!, movieNameController, imageUrlController, downloadUrlController),
+                        onPressed: () => onUpdate(controller, controller.moviesList[index]!.id!, movieNameController, imageUrlController, downloadUrlController),
                         child: Row(
                           children: [
                             Text('Update', style: theme.textTheme.titleSmall),

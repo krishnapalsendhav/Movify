@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                         elevation: 2,
                         child: FadeInImage(
                           placeholder: const AssetImage('assets/images/play.png'),
-                          image: NetworkImage('${controller.moviesList[index].imageUrl}'),
+                          image: NetworkImage('${controller.moviesList[index]!.imageUrl}'),
                           fit: BoxFit.cover,
                           height: height / 3,
                         ),
